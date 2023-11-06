@@ -1,0 +1,8 @@
+torch==1.13.*,2.0.*
+rdkit-pypi>=2021.9.2
+pysqlite3
+networkx
+numpy
+pandas
+tqdm
+
