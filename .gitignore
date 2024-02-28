@@ -1,5 +1,5 @@
-__pycache__/
-*.py[cod]
-*$py.class
-
-output/*
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
