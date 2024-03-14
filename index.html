@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Physics-informed generative model for drug-like molecule conformers">
+  <meta name="keywords" content="Diffusion, PIDM, conformer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Physics-informed generative model for drug-like molecule conformers" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="A diffusion-based, generative model for molecule conformer generation, focused on the reproduction of bonded structure.">
+  <meta property="og:url" content="http://ws00.nobiastx.internal:8008/" />
+  <meta property="og:image" content="http://ws00.nobiastx.internal:8008/static/images/web_meta.png" />
+  <meta name="twitter:card" content="static/images/web_meta.png">
+
+  <title>Physics-informed generative model for drug-like molecule conformers</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.jpg">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Physics-informed generative model for drug-like molecule conformers</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              David C. Williams,
+            </span>
+            <span class="author-block">
+              Neil Inala
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://www.nobiastx.com/">Nobias Therapeutics</a></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- JCIM link 
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.07925"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/nobiastx/diffusion-conformer"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-cholesterol">
+          <video id="cholesterol" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/cholesterol.mp4" type="video/mp4">
+          </video>
+          <div class="caption">cholesterol</div>
+        </div>
+        <div class="item item-artemether">
+          <video id="artemether" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/artemether.mp4" type="video/mp4">
+          </video>
+          <div class="caption">artemether</div>
+        </div>
+        <div class="item item-naphthacene">
+          <video id="naphthacene" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/naphthacene.mp4" type="video/mp4">
+          </video>
+          <div class="caption">naphthacene</div>
+        </div>
+        <div class="item item-penicillin">
+          <video id="penicillin" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="./static/videos/penicillin.mp4" type="video/mp4">
+          </video>
+          <div class="caption">penicillin</div>
+        </div>
+        <div class="item item-moxidectin">
+          <video id="moxidectin" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/moxidectin.mp4" type="video/mp4">
+          </video>
+          <div class="caption">moxidectin</div>
+        </div>
+        <div class="item item-butylscopolamine">
+          <video id="butylscopolamine" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/butylscopolamine.mp4" type="video/mp4">
+          </video>
+          <div class="caption">butylscopolamine</div>
+        </div>
+        <div class="item item-apixaban">
+          <video id="apixaban" autoplay controls muted loop playsinline width="462" height="360">
+            <source src="static/videos/apixaban.mp4" type="video/mp4">
+          </video>
+          <div class="caption">apixaban</div>
+        </div>
+      </div>
+    </div>
+    <script>bulmaCarousel.attach("#results-carousel",{
+			slidesToShow: window.matchMedia('(max-width: 1200px)').matches ? 1 : 3,
+      pagination: false,
+      loop: true,
+      infinite: true
+    })</script>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present a diffusion-based, generative model  
+            for conformer generation.
+            Our model is focused on the reproduction of bonded structure and is constructed from
+            the associated terms traditionally found in classical force fields
+            to ensure a physically relevant representation. Techniques in 
+            deep learning are used to infer atom typing and geometric parameters
+            from a training set. Conformer sampling is 
+            achieved by taking advantage of recent advancements
+            in diffusion-based generation. 
+            By training on large, 
+            synthetic data sets of diverse, drug-like molecules optimized with the
+            semiempirical GFN2-xTB method, high accuracy is achieved for bonded
+            parameters, exceeding that of conventional, knowledge-based methods. 
+            Results are also compared to experimental
+            structures from the Protein Databank (PDB) and Cambridge Structural Database (CSD).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <div class="content">
+          <h2 class="title is-3">Model</h2>
+          <p>
+            Diffusion models can be generalized around the concept of denoising. Our model
+            represents a denoising function 
+            <span style="font-style:italic">D</span> that yields an estimate of the actual
+            coordinates <span style="font-style:italic;font-weight:bold">x</span> 
+            of the atoms of a molecule when provided with
+            coordinates that have been perturbed by a centered, uncorrelated Gaussian of
+            width <span style="font-style:italic">σ</span>:
+          </p>
+          <img src="static/images/eq1.png" style="max-width:240px;display:block;margin-left:auto;margin-right:auto;margin-bottom:10pt">
+          <p>
+            where <span style="font-style:italic;font-weight:bold">ζ</span> represents the composition of the molecule (atom types, connectivity,
+            and chirality).
+          </p>
+          <p>
+            The architecture is build around two major components: a graph transformer [1] network to build a suitable
+            atom embedding and a series of bonded subcomponents whose outputs are summed together
+            for coordinate prediction.
+          </p>
+          <div style="border:1px solid grey">
+            <img src="static/images/model.svg" style="max-width:750px;width:100%;display:block;margin-left:auto;margin-right:auto">
+          </div>
+
+          <h2 class="title is-3">Training data</h2>
+          <p>
+            Two separate models were trained, each based on one of the following synthetic datasets. Both consist
+            of drug-like compounds optimized in vacuum using
+            the semiempirical GFN2-xTB [2] method.
+          </p>
+
+          <div class="container is-max-desktop is-clipped">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Link</th>
+                  <th style="text-align:right">Number molecules</th>
+                  <th style="text-align:right">Reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>QMugs</td>
+                  <td><a href="https://libdrive.ethz.ch/index.php/s/X5vOBNSITAG5vzM" target="_blank">https://libdrive.ethz.ch/index.php/s/X5vOBNSITAG5vzM</a></td>
+                  <td style="text-align:right">665,911</td>
+                  <td style="text-align:right">[3]</td>
+                </tr>
+                <tr>
+                  <td>GEOM-drugs</td>
+                  <td><a href="https://dataverse.harvard.edu/api/access/datafile/4327252" target="_blank">https://dataverse.harvard.edu/api/access/datafile/4327252</a></td>
+                  <td style="text-align:right">301,821</td>
+                  <td style="text-align:right">[4]</td>
+                </tr>
+              </tbody>
+            </table>
+          </container>
+          <p>
+            The two models enjoy similar performance. The examples on this page were generated using the
+            QMugs model.
+          </p>
+
+          <h2 class="title is-3">Probing</h2>
+
+          <p>
+            Among the benefits of employing a physics-informed model is a physically relevant
+            representation, which aids learning and helps with generalization. More importantly,
+            it allows the model to be probed and explained.
+            For example, by inspecting the output of the "bond" component of our model for a given 
+            molecule, we can extract predicted lengths for all associated molecular bonds.
+          </p>
+
+          <p>
+            The following is example taken from a bend in adrenaline, showing
+            the size of the correction to atom position
+            (MLP) versus 
+            the outer atom distance
+            of the noised input. As 
+            <span style="font-style:italic">σ</span> approaches zero, the model
+            predicts that no correction is needed as long as the correct atom distance is presented
+            (grey vertical line, as predicted directly from GFN2-xTB). Note that the
+            two models exhibit similar behavior.
+          </p>
+
+          <img src="static/images/bendexample.svg" width="100%"/>
+          
+
+          <h2 class="title is-3">Generation</h2>
+          <p>
+            We adopt a score-based, probability flow framework 
+            in order to generate conformers from our trained model [5].
+            As is typical in this approach,
+            we parameterize noising as a multidimensional Wiener process applied
+            to molecule coordinates <span style="font-style:italic;font-weight:bold">x</span> 
+            over a time interval 
+            <span style="font-style:italic;font-weight:bold">t</span>&nbsp;∈&nbsp;[0,1].
+            For generation, we reverse this process by starting from random atom coordinates 
+            <span style="font-style:italic;font-weight:bold">y</span> sampled from a Gaussian
+            distribution at t=1
+            and then numerically solve for the solution at t=0 by applying the probability flow ODE:
+          </p>
+          <img src="static/images/eq2.png" style="max-width:240px;display:block;margin-left:auto;margin-right:auto;margin-bottom:10pt">
+          <p>
+            where <span style="font-style:italic">α</span> is a scale parameter
+            in units of Å.
+          </p>
+
+          <p>
+            Inspired by work elsewhere [5], we solve the probability flow ODE using Heun's 2nd-order method, augmented
+            by a form of backtracking. Both stochastic and deterministic options are available,
+            the latter outperforming the former on most benchmarks. Generation can be
+            performed using any desired number of steps. Reasonably consistent results may be obtained with
+            100 steps. The examples presented here use determinstic generation and 500 steps.
+          </p>
+
+
+          <h2 class="title is-3">Sample output</h2>
+
+          <p>
+            The following examples were selected randomly and without preconditions or filtering
+            from the test subset taken from QMugs.
+            Shown in the grey column is the first conformer found in QMugs. The remaining four
+            columns are unfiltered, generated results.
+            All renderings are oriented along principal components.
+          </p>
+
+          <div class="container is-max-desktop is-clipped">
+            <div id="render-carousel" class="carousel">
+              <div class="item item-r1">
+                <figure class="image is-covered">
+                  <img src="static/images/render01.png"/>
+                </figure>
+              </div>
+              <div class="item item-r2">
+                <figure class="image is-covered">
+                  <img src="static/images/render02.png"/>
+                </figure>
+              </div>
+              <div class="item item-r3">
+                <figure class="image is-covered">
+                  <img src="static/images/render10.png"/>
+                </figure>
+              </div>
+              <div class="item item-r3">
+                <figure class="image is-covered">
+                  <img src="static/images/render11.png"/>
+                </figure>
+              </div>
+              <div class="item item-r4">
+                <figure class="image is-covered">
+                  <img src="static/images/render12.png"/>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <script>bulmaCarousel.attach("#render-carousel",{
+            pagination: false,
+            loop: true,
+            infinite: true
+          })</script>
+
+        </div>
+
+        <h2 class="title is-3">References</h2>
+
+        <div class="content">
+          <ol>
+            <li>
+              Brody, Shaked, Uri Alon, and Eran Yahav. “How Attentive Are Graph Attention Networks?” arXiv:2105.14491 [Cs], January 31, 2022. 
+              <a href="http://arxiv.org/abs/2105.14491" target="_blank">http://arxiv.org/abs/2105.14491</a>.
+            </li>
+            <li>
+              Grimme, Stefan, Christoph Bannwarth, and Philip Shushkov. “A Robust and Accurate Tight-Binding Quantum Chemical Method for Structures, Vibrational Frequencies, and Noncovalent Interactions of Large Molecular Systems Parametrized for All Spd-Block Elements (Z = 1–86).” Journal of Chemical Theory and Computation 13, no. 5 (May 9, 2017): 1989–2009. 
+              <a href="https://doi.org/10.1021/acs.jctc.7b00118" target="_blank">https://doi.org/10.1021/acs.jctc.7b00118</a>.
+            </li>
+            <li>
+              Isert, Clemens, Kenneth Atz, José Jiménez-Luna, and Gisbert Schneider. “QMugs, Quantum Mechanical Properties of Drug-like Molecules.” Scientific Data 9, no. 1 (June 7, 2022): 273. 
+              <a href="https://doi.org/10.1038/s41597-022-01390-7" target="_blank">https://doi.org/10.1038/s41597-022-01390-7</a>.
+            </li>
+            <li>
+              Axelrod, Simon, and Rafael Gómez-Bombarelli. “GEOM, Energy-Annotated Molecular Conformations for Property Prediction and Molecular Generation.” Scientific Data 9, no. 1 (April 21, 2022): 185. 
+              <a href="https://doi.org/10.1038/s41597-022-01288-4" target="_blank">https://doi.org/10.1038/s41597-022-01288-4</a>.
+            </li>
+            <li>
+              Karras, Tero, Miika Aittala, Timo Aila, and Samuli Laine. “Elucidating the Design Space of Diffusion-Based Generative Models,” 2022. 
+              <a href="https://openreview.net/forum?id=k7FuTOWMOc7" target="_blank">https://openreview.net/forum?id=k7FuTOWMOc7</a>.
+            </li>
+          </lo>
+        </div>
+      </div>
+
+
+
+<!-- change when JCIM reference is available -->
+
+        <h2 class="title">BibTeX</h2>
+       <div class="content">
+          <pre><code>@article{williams2024physicsinformed,
+    title={Physics-informed generative model for drug-like molecule conformers}, 
+    author={David C. Williams and Neil Imana},
+    year={2024},
+    eprint={2403.07925},
+    archivePrefix={arXiv},
+    primaryClass={q-bio.BM},
+    pages = {to appear},
+    journal = {Journal of Chemical Information and Modeling},
+    doi = {10.1021/acs.jcim.3c01816}
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered is-desktop">
+      <div class="column is-one-third-desktop has-text-centered">
+        <div class="content is-small">
+          <p>© 2024 Nobias Therapeutics</p>
+        </div>
+      </div>
+      <div class="column is-one-third-desktop has-text-centered">
+        <div class="content is-small">
+          <p>Web-site template based on <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

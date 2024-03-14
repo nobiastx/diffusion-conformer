@@ -1,0 +1,54 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+}
+
+.results-carousel video {
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  height: 320px;
+  width: 460px;
+  background: white;
+  padding: 0;
+}
+
+.results-carousel .caption {
+  text-align: center;
+}
+
+#render-carousel img {
+  width: 100%;
+  max-width: 900px
+}
