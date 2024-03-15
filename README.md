@@ -6,7 +6,8 @@ This package provides an implementation of the
 generative model as described by the article:
 
 * Williams, D.C. and Inala, N. "Physics-informed generative model for drug-like molecule conformers."
-[https://arxiv.org/abs/2403.07925](https://arxiv.org/abs/2403.07925)
+[https://arxiv.org/abs/2403.07925](https://arxiv.org/abs/2403.07925),
+[10.1021/acs.jcim.3c01816](https://pubs.acs.org/doi/10.1021/acs.jcim.3c01816)
 
 ## Requirements
 
